@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Biologia - Tarefa 8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Biology Report: Assignment 8</title>
     <style>
-        /* This centers everything perfectly */
+        /* This centers the box on your screen */
         body { 
             background-color: #f4f7f6; 
             display: flex; 
@@ -12,66 +14,72 @@
             align-items: center; 
             height: 100vh; 
             margin: 0; 
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        /* This is your white box with the green top */
+        /* The main white box */
         .card { 
             background: white; 
             padding: 30px; 
             border-radius: 10px; 
             border-top: 10px solid #27ae60; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
             width: 350px;
         }
-        h1 { color: #27ae60; font-size: 20px; margin-bottom: 5px; }
-        .tree { font-size: 50px; margin: 15px 0; }
+        h1 { color: #27ae60; font-size: 20px; margin-bottom: 5px; text-transform: uppercase; }
+        .tree { font-size: 60px; margin: 15px 0; }
+        p { font-size: 14px; color: #444; line-height: 1.5; }
         input { 
             width: 90%; 
-            padding: 10px; 
+            padding: 12px; 
             margin: 10px 0; 
             border: 1px solid #ddd; 
             border-radius: 5px;
             text-align: center;
+            outline: none;
         }
         button { 
             background: #27ae60; 
             color: white; 
             border: none; 
             padding: 12px; 
-            width: 97%; 
+            width: 98%; 
             border-radius: 5px; 
             font-weight: bold; 
             cursor: pointer;
+            transition: 0.2s;
         }
+        button:hover { background: #219150; }
+        #msg { font-size: 11px; color: #888; margin-top: 15px; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>TAREFA 8: BIOMA</h1>
-        <p style="font-size: 12px; color: grey;">Portal de Submissão</p>
+        <h1>Assignment 8: Biome Study</h1>
+        <p style="font-size: 11px; color: #999; margin-top: 0;">Student ID: 047-B | Region: Amazonia</p>
         
         <div class="tree">🎄</div>
         
-        <p>Insira o Token ID para descriptografar os logs.</p>
+        <p>This module is encrypted. Please enter your <b>Peer Review Token</b> to access the simulation data.</p>
         
-        <input type="password" id="token" placeholder="Token ID">
+        <input type="password" id="token" placeholder="Enter Token ID">
         <br>
-        <button onclick="check()">ENVIAR DADOS</button>
+        <button onclick="check()">DECRYPT & SUBMIT</button>
         
-        <p id="msg" style="font-size: 10px; color: #888; margin-top: 15px;">CONEXÃO SEGURA</p>
+        <p id="msg">SECURE CONNECTION: ACTIVE</p>
     </div>
 
     <script>
         function check() {
             var pass = document.getElementById('token').value;
             if (pass === "tree77") {
-                document.getElementById('msg').innerText = "REDIRECIONANDO...";
-                // Your new secret Canva link goes here:
+                document.getElementById('msg').innerText = "ACCESS GRANTED. REDIRECTING...";
+                // Make sure this link is your secret Canva copy!
                 window.location.href = 'https://my-mc-launcher.my.canva.site/projeto-setor-77';
             } else {
-                alert("Token incorreto.");
+                alert("Invalid Token. Please check your assignment sheet.");
+                document.getElementById('token').value = "";
             }
         }
     </script>
