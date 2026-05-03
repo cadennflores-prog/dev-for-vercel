@@ -16,9 +16,9 @@
             align-items: center; 
             height: 100vh; 
             margin: 0; 
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
-        /* The Biology Assignment Box */
+        /* The Professional School Box */
         .card { 
             background: white; 
             padding: 40px; 
@@ -26,11 +26,12 @@
             border-top: 10px solid #27ae60; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center; 
-            width: 350px;
+            width: 360px;
         }
         h1 { color: #27ae60; font-size: 20px; margin-bottom: 5px; text-transform: uppercase; }
         .tree { font-size: 60px; margin: 20px 0; }
         p { font-size: 14px; color: #555; line-height: 1.6; }
+        
         input { 
             width: 90%; padding: 12px; margin: 15px 0; 
             border: 1px solid #ddd; border-radius: 6px; 
@@ -41,24 +42,24 @@
             padding: 14px; width: 98%; border-radius: 6px; 
             font-weight: bold; cursor: pointer;
         }
-        #status { font-size: 10px; color: #aaa; margin-top: 20px; text-transform: uppercase; }
+        #status { font-size: 10px; color: #aaa; margin-top: 20px; }
     </style>
 </head>
 <body>
 
     <div class="card">
         <h1>Assignment 8: Biome Study</h1>
-        <p style="font-size: 11px; color: #999;">STUDENT ID: 047-B | REGION: AMAZONIA</p>
+        <p style="font-size: 11px; color: #999;">STUDENT ID: 047-B | PROJECT: AMAZONIA</p>
         
         <div class="tree">🎄</div>
         
-        <p>Please enter your <b>Peer Review Token</b> to access the localized simulation data.</p>
+        <p>Please enter your <b>Peer Review Token</b> to access the localized flora simulation data.</p>
         
         <input type="password" id="token" placeholder="Enter Token ID">
         <br>
         <button onclick="unlock()">DECRYPT & ACCESS</button>
         
-        <p id="status">Secure SSL Connection Active</p>
+        <p id="status">SECURE CONNECTION ACTIVE</p>
     </div>
 
     <script>
@@ -66,17 +67,16 @@
             var pass = document.getElementById('token').value;
             var status = document.getElementById('status');
             
-            if (pass === "2014") {
+            if (pass === "tree77") {
                 status.innerText = "ACCESS GRANTED. REDIRECTING...";
                 
-                /* THE REDIRECT FIX: 
-                   Using location.replace avoids the "Refused to Connect" error 
-                   and makes the back-button trail harder to follow.
-                */
-                window.location.replace("https://my-mc-launcher.my.canva.site/projeto-setor-77");
+                // EXACT LINK FROM YOUR PHOTO:
+                var target = "https://my-mc-launcher.my.canva.site/dev-0-4-5-12-7-5-3-8";
+                
+                window.location.replace(target);
 
             } else {
-                alert("Invalid Token. Please check your assignment sheet.");
+                alert("Invalid Token ID.");
                 document.getElementById('token').value = "";
             }
         }
