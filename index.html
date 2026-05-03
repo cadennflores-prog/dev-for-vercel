@@ -9,28 +9,28 @@
     <title>Biology Report: Assignment 8</title>
 
     <style>
-        /* Resets the page so it looks professional */
-        body, html { 
-            margin: 0; padding: 0; height: 100%; width: 100%;
-            overflow: hidden; font-family: 'Segoe UI', Tahoma, sans-serif; 
-            background: #f4f7f6; 
+        body { 
+            background-color: #f4f7f6; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, sans-serif;
         }
-
-        /* SECTION: THE LOGIN SCREEN */
-        #gate { 
-            display: flex; justify-content: center; align-items: center; 
-            height: 100vh; width: 100%; position: absolute; 
-            z-index: 100; background: #f4f7f6;
-        }
+        /* The Biology Assignment Box */
         .card { 
-            background: white; padding: 40px; border-radius: 12px; 
-            border-top: 10px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center; width: 380px;
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            border-top: 10px solid #27ae60; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center; 
+            width: 350px;
         }
-        h1 { color: #27ae60; font-size: 22px; margin-bottom: 5px; text-transform: uppercase; }
+        h1 { color: #27ae60; font-size: 20px; margin-bottom: 5px; text-transform: uppercase; }
         .tree { font-size: 60px; margin: 20px 0; }
         p { font-size: 14px; color: #555; line-height: 1.6; }
-        
         input { 
             width: 90%; padding: 12px; margin: 15px 0; 
             border: 1px solid #ddd; border-radius: 6px; 
@@ -39,41 +39,27 @@
         button { 
             background: #27ae60; color: white; border: none; 
             padding: 14px; width: 98%; border-radius: 6px; 
-            font-weight: bold; cursor: pointer; transition: 0.3s;
+            font-weight: bold; cursor: pointer;
         }
-        button:hover { background: #219150; }
-
-        /* SECTION: THE SECRET WINDOW (The Canva site) */
-        #secret-frame {
-            display: none; width: 100%; height: 100vh; 
-            border: none; position: relative; z-index: 1;
-        }
+        #status { font-size: 10px; color: #aaa; margin-top: 20px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div id="gate">
-        <div class="card">
-            <h1>Assignment 8: Biome Study</h1>
-            <p style="font-size: 11px; color: #999; margin-bottom: 20px;">
-                STUDENT ID: 047-B | ACCESS: RESTRICTED
-            </p>
-            
-            <div class="tree">🎄</div>
-            
-            <p>Please enter your <b>Peer Review Token</b> to access the localized flora simulation data.</p>
-            
-            <input type="password" id="token" placeholder="Enter Token ID">
-            <br>
-            <button onclick="unlock()">DECRYPT & ACCESS</button>
-            
-            <p id="status" style="font-size: 10px; color: #aaa; margin-top: 20px;">
-                SECURE SSL CONNECTION ESTABLISHED
-            </p>
-        </div>
+    <div class="card">
+        <h1>Assignment 8: Biome Study</h1>
+        <p style="font-size: 11px; color: #999;">STUDENT ID: 047-B | REGION: AMAZONIA</p>
+        
+        <div class="tree">🎄</div>
+        
+        <p>Please enter your <b>Peer Review Token</b> to access the localized simulation data.</p>
+        
+        <input type="password" id="token" placeholder="Enter Token ID">
+        <br>
+        <button onclick="unlock()">DECRYPT & ACCESS</button>
+        
+        <p id="status">Secure SSL Connection Active</p>
     </div>
-
-    <iframe id="secret-frame" src=""></iframe>
 
     <script>
         function unlock() {
@@ -81,21 +67,16 @@
             var status = document.getElementById('status');
             
             if (pass === "2014") {
-                status.innerText = "ACCESS GRANTED. DECRYPTING...";
+                status.innerText = "ACCESS GRANTED. REDIRECTING...";
                 
-                // --- INSERT YOUR NEW CANVA LINK HERE ---
-                const myCanvaLink = "https://my-mc-launcher.my.canva.site/projeto-setor-77";
-                
-                document.getElementById('secret-frame').src = myCanvaLink;
-                
-                // Hide the login, show the iframe
-                setTimeout(function(){
-                    document.getElementById('gate').style.display = "none";
-                    document.getElementById('secret-frame').style.display = "block";
-                }, 800);
+                /* THE REDIRECT FIX: 
+                   Using location.replace avoids the "Refused to Connect" error 
+                   and makes the back-button trail harder to follow.
+                */
+                window.location.replace("https://my-mc-launcher.my.canva.site/projeto-setor-77");
 
             } else {
-                alert("Invalid Token. Access Denied.");
+                alert("Invalid Token. Please check your assignment sheet.");
                 document.getElementById('token').value = "";
             }
         }
